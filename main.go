@@ -4,13 +4,16 @@ import (
 	"fmt"
 )
 
-const Pi = 3.14
+const (
+	Big   = 1 << 100 // high precision number
+	Small = Big >> 99
+)
+
+func needInt(x int) int           { return x*10 - 1 }
+func needFloat(x float64) float64 { return x * 0.1 }
 
 func main() {
-	const world = "Casey"  // don't use := for const assignments
-	fmt.Println("Hello", world)
-	fmt.Println("Happy", Pi, "Day") // Println concatenates with spaces
-
-	const Truth = true
-	fmt.Println("Go rules?", Truth)
+	fmt.Printf("needInt(Small): %v\n", needInt(Small))
+	fmt.Printf("needFloat(Small): %v\n", needFloat(Small))
+	fmt.Printf("needFloat(Big): %v\n", needFloat(Big))
 }
