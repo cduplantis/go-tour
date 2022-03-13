@@ -4,9 +4,11 @@ import (
 	"fmt"
 )
 
-var c, python, java bool
+// A var declaration can include initializers, one per variable.
+// if an initializer is present, the type can be omitted; the variable will take the type of the initializer.
+var i, j int = 1, 2
 
 func main() {
-	var i int
+	var c, python, java = true, false, "no!"
 	fmt.Println(i, c, python, java)
 }
