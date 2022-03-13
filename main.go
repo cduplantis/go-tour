@@ -2,22 +2,25 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func main() {
-	a := make([]int, 5)
-	printSlice("a", a)
+	// create a tic-tac-toe board
+	board := [][]string{
+		[]string{"_", "_", "_"},
+		{"_", "_", "_"}, // redundant type declaration can be omitted
+		{"_", "_", "_"},
+	}
 
-	b := make([]int, 5)
-	printSlice("b", b)
+	// players take turns
+	board[0][0] = "X"
+	board[2][2] = "O"
+	board[1][2] = "X"
+	board[1][0] = "O"
+	board[0][2] = "X"
 
-	c := b[:2]
-	printSlice("c", c)
-
-	d := c[2:5]
-	printSlice("d", d)
-}
-
-func printSlice(s string, x []int) {
-	fmt.Printf("%s len=%d cap=%d %v\n", s, len(x), cap(x), x)
+	for i := 0; i < len(board); i++ {
+		fmt.Printf("%s\n", strings.Join(board[i], " "))
+	}
 }
