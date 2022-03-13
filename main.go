@@ -4,8 +4,13 @@ import (
 	"fmt"
 )
 
+const Pi = 3.14
+
 func main() {
-  // v := 42
-	v := 42.0
-	fmt.Printf("v is of type %T\n", v)
+	const world = "Casey"  // don't use := for const assignments
+	fmt.Println("Hello", world)
+	fmt.Println("Happy", Pi, "Day") // Println concatenates with spaces
+
+	const Truth = true
+	fmt.Println("Go rules?", Truth)
 }
