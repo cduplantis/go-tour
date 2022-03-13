@@ -1,17 +1,26 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	s := []int{1, 2, 3, 5, 7, 11, 13}
+	printSlice(s)
 
-	s = s[1:4] // 2,3,5
-	fmt.Println(s)
+	// slice the slice to give it zero length
+	s = s[:0]
+	printSlice(s)
 
-	s = s[:2] // 2,3
-	fmt.Println(s)
+	// extend its length
+	s = s[:4]
+	printSlice(s)
 
-	s = s[1:] // 3
-	fmt.Println(s)
+	// drop its first two values
+	s = s[2:]
+	printSlice(s)
+}
 
+func printSlice(s []int) {
+	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
 }
