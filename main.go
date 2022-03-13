@@ -1,19 +1,18 @@
 package main
 
-import (
-	"fmt"
-)
-
-type I interface {
-	M()
-}
+import "fmt"
 
 func main() {
-	var i I
+	var i interface{}
 	describe(i)
-	i.M()
+
+	i = 42
+	describe(i)
+
+	i = "hello"
+	describe(i)
 }
 
-func describe(i I) {
+func describe(i interface{}) {
 	fmt.Printf("(%v, %T)\n", i, i)
 }
