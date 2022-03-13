@@ -2,17 +2,16 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 )
 
-func Sqrt(x float64) float64 {
-	z := 1.0
-	for i := 0; i < 100; i++ {
-		z -= (z*z - x) / (2 * z)
-		fmt.Println(z)
-	}
-	return z
-}
-
 func main() {
-	fmt.Println(Sqrt(2))
+	switch os := runtime.GOOS; os {
+	case "darwin":
+		fmt.Print("OS X")
+	case "linux":
+		fmt.Print("Linux.")
+	default:
+		fmt.Printf("%s!\n", os)
+	}
 }
