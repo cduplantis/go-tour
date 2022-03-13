@@ -2,17 +2,18 @@ package main
 
 import "fmt"
 
-func adder() func(int) int {
-	sum := 0
-	return func(x int) int {
-		sum += x
-		return sum
-	}
+// fibonacci returns a closure of type func() int
+func fibonacci() func() int {
+    a, b := 0, 1
+    return func() int {
+        a, b = b, a+b
+        return a
+    }
 }
 
 func main() {
-	pos, neg := adder(), adder()
+	f := fibonacci()
 	for i := 0; i < 10; i++ {
-		fmt.Println(pos(i), neg(-2*i))
+		fmt.Println(f())
 	}
 }
