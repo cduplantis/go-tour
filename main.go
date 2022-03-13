@@ -1,36 +1,12 @@
 package main
 
 import (
-	"io"
-	"os"
-	"strings"
+	"fmt"
+	"image"
 )
 
-type rot13Reader struct {
-	r io.Reader
-}
-
-func (r rot13Reader) Read(b []byte) (int, error) {
-	n, err := r.r.Read(b)
-	
-	for i, v := range b[:n] {
-		switch {
-		case v >= 'A' && v <= 'M':
-			b[i] += 13
-		case v >= 'N' && v <= 'Z':
-			b[i] -= 13
-		case v >= 'a' && v <= 'm':
-			b[i] += 13
-		case v >= 'n' && v <= 'z':
-			b[i] -= 13
-		}
-	}
-	
-	return n, err
-}
-
 func main() {
-	s := strings.NewReader("Lbh penpxrq gur pbqr!")
-	r := rot13Reader{s}
-	io.Copy(os.Stdout, &r)
+	m := image.NewRGBA(image.Rect(0, 0, 100, 100))
+	fmt.Println(m.Bounds())
+	fmt.Println(m.At(0, 0).RGBA())
 }
